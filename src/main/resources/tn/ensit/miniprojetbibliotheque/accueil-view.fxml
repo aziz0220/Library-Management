@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="tn.ensit.miniprojetbibliotheque.AccueilController">
+
+    <MenuBar >
+        <Menu text="Accueil">
+            <MenuItem onAction="#handleExit" text="Exit" />
+        </Menu>
+    </MenuBar>
+
+    <VBox alignment="CENTER" prefHeight="314.0" prefWidth="457.0" spacing="20">
+        <Label styleClass="title" stylesheets="@styles.css" text="Bienvenue" />
+
+        <Button fx:id="manageBooksButton" onAction="#openBooksInterface" text="Manage Books" />
+        <Button fx:id="manageReadersButton" onAction="#openReadersInterface" text="Manage Readers" />
+        <Button fx:id="borrowReturnButton" onAction="#openBorrowReturnInterface" text="Borrow/Return Books" />
+    </VBox>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label fx:id="welcomeText"/>
+
+
+
+</VBox>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="rootPane" stylesheets="dark-theme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.ensit.miniprojetbibliotheque.ListeEmpruntController">
+    <children>
+        <AnchorPane id="AnchorPane" fx:id="contentPane" prefHeight="546.0" prefWidth="789.0" stylesheets="dark-theme.css">
+            <children>
+                <TableView fx:id="tableView" layoutX="10.0" layoutY="10.0" prefHeight="410.0" prefWidth="732.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                    <columns>
+                        <TableColumn fx:id="idCol" maxWidth="100.0" minWidth="44.000001549720764" prefWidth="44.000001549720764" text="SI No" />
+                        <TableColumn fx:id="bookIDCol" maxWidth="3000.0" prefWidth="75.20001220703125" text="Book ID" />
+                        <TableColumn fx:id="bookNameCol" prefWidth="125.59993743896484" text="Book Name" />
+                        <TableColumn fx:id="lecteurCINCol" prefWidth="158.4000244140625" text="lecteur_CIN" />
+                        <TableColumn fx:id="lecteurNameCol" prefWidth="92.0" text="Lecteur" />
+                        <TableColumn fx:id="dateEmprunteCol" prefWidth="145.60000610351562" text="Date Emprunte" />
+                        <TableColumn fx:id="daysCol" maxWidth="100.0" minWidth="64.0" prefWidth="64.0" text="Days" />
+                        <TableColumn fx:id="dateRetourCol" maxWidth="3000.0" prefWidth="86.4000244140625" text="Date Retour" />
+                    </columns>
+                    <contextMenu>
+                        <ContextMenu>
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#handleReturn" text="Return this" />
+                                <MenuItem mnemonicParsing="false" onAction="#handleRefresh" text="Refresh" />
+                            </items>
+                            <styleClass>
+                                <String fx:value="table-context" />
+                                <String fx:value="colored-context-menu" />
+                            </styleClass>
+                        </ContextMenu>
+                    </contextMenu>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+                <MenuBar layoutX="20.0" layoutY="20.0" prefHeight="32.0" prefWidth="722.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#exportAsPDF" text="Export as PDF" />
+                                <MenuItem mnemonicParsing="false" onAction="#closeStage" text="Close" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>
