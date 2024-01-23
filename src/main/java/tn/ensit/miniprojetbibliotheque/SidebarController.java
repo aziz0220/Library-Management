@@ -32,23 +32,23 @@ public class SidebarController implements MainCallback {
 
     @FXML
     private void loadAddMember(ActionEvent event) {
-        LibraryAssistantUtil.loadWindow(getClass().getResource("ajout-lecteur-view.fxml"), "Add New Member", null);
+        LibraryAssistantUtil.loadWindow(getClass().getResource("ajout-lecteur-view.fxml"), "Ajout Lecteur", null);
     }
     @FXML
     private void loadAddBook(ActionEvent event) {
-        LibraryAssistantUtil.loadWindow(getClass().getResource("ajout-livre-view.fxml"), "Add New Book", null);
+        LibraryAssistantUtil.loadWindow(getClass().getResource("ajout-livre-view.fxml"), "Ajout Livre", null);
     }
     @FXML
     private void loadMemberTable(ActionEvent event) {
-      LibraryAssistantUtil.loadWindow(getClass().getResource("liste-lecteurs-view.fxml"), "Member List", null);
+      LibraryAssistantUtil.loadWindow(getClass().getResource("liste-lecteurs-view.fxml"), "Liste des Lecteurs", null);
     }
     @FXML
     private void loadBookTable(ActionEvent event) {
-        LibraryAssistantUtil.loadWindow(getClass().getResource("liste-livres-view.fxml"), "Book List", null);
+        LibraryAssistantUtil.loadWindow(getClass().getResource("liste-livres-view.fxml"), "Liste des Livres", null);
     }
     @FXML
     private void loadIssuedBookList(ActionEvent event) {
-        Object controller = LibraryAssistantUtil.loadWindow(getClass().getResource("liste-emprunt-view.fxml"), "Issued Book List", null);
+        Object controller = LibraryAssistantUtil.loadWindow(getClass().getResource("liste-emprunt-view.fxml"), "Liste des Livres Empruntées", null);
 
     }
 

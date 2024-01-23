@@ -85,7 +85,7 @@ public class MainController implements Initializable{
 
     @FXML
     private void handleMenuAddBook(ActionEvent event) {
-        LibraryAssistantUtil.loadWindow(getClass().getResource("ajout-livre-view.fxml"), "Add New Book", null);
+        LibraryAssistantUtil.loadWindow(getClass().getResource("ajout-livre-view.fxml"), "Ajout Livre", null);
     }
 
     @FXML
@@ -101,7 +101,7 @@ public class MainController implements Initializable{
 
     @FXML
     private void handleMenuViewMemberList(ActionEvent event) {
-        LibraryAssistantUtil.loadWindow(getClass().getResource("liste-lecteurs-view"), "Member List", null);
+        LibraryAssistantUtil.loadWindow(getClass().getResource("liste-lecteurs-view"), "Liste des Lecteurs", null);
     }
 
 
@@ -131,7 +131,7 @@ public class MainController implements Initializable{
 
     @FXML
     private void handleIssuedList(ActionEvent event) {
-        LibraryAssistantUtil.loadWindow(getClass().getResource("liste-emprunt-view.fxml"), "Issued Book List", null);
+        LibraryAssistantUtil.loadWindow(getClass().getResource("liste-emprunt-view.fxml"), "Liste des Livres Empruntées", null);
     }
 
     @FXML
