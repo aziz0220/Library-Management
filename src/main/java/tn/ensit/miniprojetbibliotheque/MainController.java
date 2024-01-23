@@ -36,15 +36,14 @@ public class MainController implements Initializable{
 
     private DatabaseHandler databaseHandler;
     private PieChart bookChart;
-    private PieChart memberChart;
+
     @FXML
     public HBox book_info;
     @FXML
     private Button emprunt;
+
     @FXML
-    private HBox member_info;
-    @FXML
-    private AnchorPane rootPane;
+    public AnchorPane rootPane;
 
     @FXML
     private AnchorPane rootAnchorPane;
@@ -59,15 +58,17 @@ public class MainController implements Initializable{
 
     @FXML
     private StackPane bookInfoContainer;
-    @FXML
-    private StackPane memberInfoContainer;
 
+    private AccueilController accueilController;
+
+    private SidebarController sidebarController;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Instantiate EmpruntLivreController
+        SidebarController sidebarController = new SidebarController();
+        sidebarController.setMainController(this);
         EmpruntLivreController empruntController = new EmpruntLivreController();
-        // Set the reference to MainController
         empruntController.setMainController(this);
+
        databaseHandler = DatabaseHandler.getInstance();
         initDrawer();
         initGraphs();
@@ -108,7 +109,6 @@ public class MainController implements Initializable{
     void handleEmpruntView(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("emprunt-view.fxml"));
         Parent root = loader.load();
-
         // Get the controller instance from the loader
         EmpruntLivreController empruntController = loader.getController();
         // Set the reference to MainController
@@ -139,6 +139,16 @@ public class MainController implements Initializable{
         Stage stage = getStage();
         stage.setFullScreen(!stage.isFullScreen());
     }
+
+    public void setAccueilController(AccueilController accueilController) {
+        this.accueilController = accueilController;
+    }
+
+
+    public void setSidebarController(SidebarController Controller) {
+        this.sidebarController = Controller;
+    }
+
 
     private void initDrawer() {
         try {
@@ -173,30 +183,38 @@ public class MainController implements Initializable{
 
     private void initGraphs() {
         bookChart = new PieChart(databaseHandler.getBookGraphStatistics());
-        //memberChart = new PieChart(databaseHandler.getMemberGraphStatistics());
         bookInfoContainer.getChildren().add(bookChart);
-       // memberInfoContainer.getChildren().add(memberChart);
-
-//        bookIssueTab.setOnSelectionChanged((Event event) -> {
-//            clearIssueEntries();
-//            if (bookIssueTab.isSelected()) {
-//                refreshGraphs();
-//            }
-//        });
     }
 
     private void refreshGraphs() {
         bookChart.setData(databaseHandler.getBookGraphStatistics());
-      //  memberChart.setData(databaseHandler.getMemberGraphStatistics());
     }
 
     private void enableDisableGraph(Boolean status) {
         if (status) {
             bookChart.setOpacity(1);
-        //    memberChart.setOpacity(1);
         } else {
             bookChart.setOpacity(0);
-        //    memberChart.setOpacity(0);
+
         }
     }
+
+//    @FXML
+    public void closeSession(ActionEvent event, Button quitButton)  {
+
+        Scene scene = quitButton.getScene();
+        quitButton.setDisable(true);
+        this.rootPane.translateXProperty().set(0);
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(rootPane.translateXProperty(), scene.getWidth(), Interpolator.EASE_OUT);
+        KeyFrame kf = new KeyFrame(Duration.seconds(0.3), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(event0 -> {
+            accueilController.mainContainer.getChildren().remove(rootPane);
+            accueilController.mainContainer.getChildren().add(accueilController.startAnchor);
+            quitButton.setDisable(false);
+        });
+        timeline.play();
     }
+}
+

@@ -1,12 +1,5 @@
 package tn.ensit.miniprojetbibliotheque.alert;
 
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
-import com.jfoenix.controls.events.JFXDialogEvent;
-import java.awt.SystemTray;
-import java.awt.TrayIcon;
-import java.awt.TrayIcon.MessageType;
-import java.awt.image.BufferedImage;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.List;
@@ -17,14 +10,12 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.BoxBlur;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javax.imageio.ImageIO;
 import tn.ensit.miniprojetbibliotheque.util.LibraryAssistantUtil;
 
 public class AlertMaker {
@@ -120,7 +111,7 @@ public class AlertMaker {
         dialog.getDialogPane().getStylesheets().add(AlertMaker.class.getResource("/tn/ensit/miniprojetbibliotheque/dark-theme.css").toExternalForm());
         dialog.getDialogPane().getStyleClass().add("custom-alert");
 
-        // Create VBox to hold header and body
+
         VBox content = new VBox();
         content.setSpacing(10);
 
@@ -130,7 +121,7 @@ public class AlertMaker {
         content.getChildren().addAll(headerLabel, bodyLabel);
         dialog.getDialogPane().setContent(content);
 
-        // Create ButtonTypes for each control button
+
         List<ButtonType> buttonTypes = controls.stream()
                 .map(button -> new ButtonType(button.getText(), ButtonBar.ButtonData.OK_DONE))
                 .collect(Collectors.toList());
@@ -150,7 +141,6 @@ public class AlertMaker {
     private static void styleAlert(Alert alert) {
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         LibraryAssistantUtil.setStageIcon(stage);
-
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(AlertMaker.class.getResource("/tn/ensit/miniprojetbibliotheque/dark-theme.css").toExternalForm());
         dialogPane.getStyleClass().add("custom-alert");

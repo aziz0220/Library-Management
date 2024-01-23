@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import tn.ensit.miniprojetbibliotheque.alert.AlertMaker;
 import tn.ensit.miniprojetbibliotheque.callback.BookReturnCallback;
+import tn.ensit.miniprojetbibliotheque.callback.MainCallback;
 import tn.ensit.miniprojetbibliotheque.database.EmpruntController;
 import tn.ensit.miniprojetbibliotheque.database.LivreController;
 import tn.ensit.miniprojetbibliotheque.database.LecteurController;
@@ -29,7 +30,7 @@ import tn.ensit.miniprojetbibliotheque.util.LibraryAssistantUtil;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
-public class EmpruntLivreController {
+public class EmpruntLivreController implements MainCallback {
     private MainController mainController;
 
     @FXML
@@ -193,6 +194,7 @@ public class EmpruntLivreController {
 
     }
 
+    @Override
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }

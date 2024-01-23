@@ -23,23 +23,23 @@
                 <JFXHamburger fx:id="hamburger" styleClass="jfx-hamburger-icon" />
             </graphic>
          </Menu>
-          <Menu mnemonicParsing="false" text="Programme">
+          <Menu mnemonicParsing="false" text="Biblio">
               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#handleMenuClose" text="Exit" />
+                  <MenuItem fx:id="closeSessionButton" mnemonicParsing="false" onAction="#handleMenuClose" text="Exit" />
               </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Ajouter">
               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#handleMenuAddBook" text="Add Book" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleMenuAddMember" text="Add Member" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuAddBook" text="Ajouter Livre" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuAddMember" text="Ajouter Lecteur" />
               </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Afficher">
               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#handleMenuViewBook" text="Book List" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleMenuViewMemberList" text="Member List" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleIssuedList" text="Issued Book List" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleMenuFullScreen" text="Full Screen" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuViewBook" text="Liste des Livres" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuViewMemberList" text="Liste des Membres" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleIssuedList" text="Listes des empruntes" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuFullScreen" text="Plein Ecran" />
               </items>
           </Menu>
       </menus>

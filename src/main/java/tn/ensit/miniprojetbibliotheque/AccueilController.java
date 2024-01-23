@@ -7,6 +7,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,19 +19,25 @@ import tn.ensit.miniprojetbibliotheque.util.LibraryAssistantUtil;
 
 
 import java.io.IOException;
-import java.sql.Time;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class AccueilController {
-
-
+public class AccueilController implements Initializable {
     @FXML
     private Button StartButton;
-
     @FXML
-    private StackPane mainContainer;
-
+    public StackPane mainContainer;
     @FXML
-    private AnchorPane startAnchor;
+    public AnchorPane startAnchor;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        MainController mainController = new MainController();
+
+        mainController.setAccueilController(this);
+
+    }
 
     @FXML
     private void handleStartButton(ActionEvent event) throws IOException {
@@ -94,6 +101,12 @@ public class AccueilController {
     private Stage getStage() {
         return (Stage) mainContainer.getScene().getWindow();
     }
+
+
+
+
+
+
 
 
 }

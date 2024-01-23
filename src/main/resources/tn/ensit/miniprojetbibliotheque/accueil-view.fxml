@@ -17,12 +17,12 @@
            <menus>
                <Menu mnemonicParsing="false" text="Acceuil">
                    <items>
-                       <MenuItem mnemonicParsing="false" onAction="#handleMenuClose" text="Exit" />
+                       <MenuItem mnemonicParsing="false" onAction="#handleMenuClose" text="Quitter" />
                    </items>
                </Menu>
-               <Menu mnemonicParsing="false" text="View">
+               <Menu mnemonicParsing="false" text="Affichage">
                    <items>
-                       <MenuItem mnemonicParsing="false" onAction="#handleMenuFullScreen" text="Full Screen" />
+                       <MenuItem mnemonicParsing="false" onAction="#handleMenuFullScreen" text="Plein Ecran" />
                    </items>
                </Menu>
            </menus>

@@ -7,11 +7,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -29,9 +27,6 @@ import tn.ensit.miniprojetbibliotheque.MainController;
 public class LibraryAssistantUtil {
 
     public static final String ICON_IMAGE_LOC = "icon.png";
-    public static final String MAIL_CONTENT_LOC = "mail_content.html";
-    private static final SimpleDateFormat DATE_TIME_FORMAT = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
 
     public static void setStageIcon(Stage stage) {
         stage.getIcons().add(new Image(ICON_IMAGE_LOC));
@@ -84,31 +79,4 @@ public class LibraryAssistantUtil {
         }
     }
 
-    public static String formatDateTimeString(Date date) {
-        return DATE_TIME_FORMAT.format(date);
-    }
-
-    public static String formatDateTimeString(Long time) {
-        return DATE_TIME_FORMAT.format(new Date(time));
-    }
-
-    public static String getDateString(Date date) {
-        return DATE_FORMAT.format(date);
-    }
-
-    public static boolean validateEmailAddress(String emailID) {
-        String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-        Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(emailID).matches();
-    }
-
-    public static void openFileWithDesktop(File file) {
-        try {
-            Desktop desktop = Desktop.getDesktop();
-            desktop.open(file);
-        } catch (IOException ex) {
-            Logger.getLogger(LibraryAssistantUtil.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }
