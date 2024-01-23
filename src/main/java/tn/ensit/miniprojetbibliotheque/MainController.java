@@ -177,10 +177,6 @@ public class MainController implements Initializable{
     }
 
 
-    private void clearIssueEntries() {
-        enableDisableGraph(true);
-    }
-
     private void initGraphs() {
         bookChart = new PieChart(databaseHandler.getBookGraphStatistics());
         bookInfoContainer.getChildren().add(bookChart);
@@ -188,15 +184,6 @@ public class MainController implements Initializable{
 
     private void refreshGraphs() {
         bookChart.setData(databaseHandler.getBookGraphStatistics());
-    }
-
-    private void enableDisableGraph(Boolean status) {
-        if (status) {
-            bookChart.setOpacity(1);
-        } else {
-            bookChart.setOpacity(0);
-
-        }
     }
 
 //    @FXML

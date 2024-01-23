@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="rootPane" stylesheets="dark-theme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.ensit.miniprojetbibliotheque.ListeEmpruntController">
+<StackPane fx:id="rootPane" stylesheets="biblio_styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.ensit.miniprojetbibliotheque.ListeEmpruntController">
     <children>
-        <AnchorPane id="AnchorPane" fx:id="contentPane" prefHeight="546.0" prefWidth="789.0" stylesheets="dark-theme.css">
+        <AnchorPane id="AnchorPane" fx:id="contentPane" prefHeight="546.0" prefWidth="789.0" stylesheets="biblio_styles.css">
             <children>
                 <TableView fx:id="tableView" layoutX="10.0" layoutY="10.0" prefHeight="410.0" prefWidth="732.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                     <columns>

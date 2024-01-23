@@ -38,79 +38,14 @@ public class AlertMaker {
         alert.showAndWait();
     }
 
-    public static void showErrorMessage(Exception ex) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error occured");
-        alert.setHeaderText("Error Occured");
-        alert.setContentText(ex.getLocalizedMessage());
-
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        ex.printStackTrace(pw);
-        String exceptionText = sw.toString();
-
-        Label label = new Label("The exception stacktrace was:");
-
-        TextArea textArea = new TextArea(exceptionText);
-        textArea.setEditable(false);
-        textArea.setWrapText(true);
-
-        textArea.setMaxWidth(Double.MAX_VALUE);
-        textArea.setMaxHeight(Double.MAX_VALUE);
-        GridPane.setVgrow(textArea, Priority.ALWAYS);
-        GridPane.setHgrow(textArea, Priority.ALWAYS);
-
-        GridPane expContent = new GridPane();
-        expContent.setMaxWidth(Double.MAX_VALUE);
-        expContent.add(label, 0, 0);
-        expContent.add(textArea, 0, 1);
-
-        alert.getDialogPane().setExpandableContent(expContent);
-
-        styleAlert(alert);
-        alert.showAndWait();
-    }
-
-    public static void showErrorMessage(Exception ex, String title, String content) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error occured");
-        alert.setHeaderText(title);
-        alert.setContentText(content);
-
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        ex.printStackTrace(pw);
-        String exceptionText = sw.toString();
-
-        Label label = new Label("The exception stacktrace was:");
-
-        TextArea textArea = new TextArea(exceptionText);
-        textArea.setEditable(false);
-        textArea.setWrapText(true);
-
-        textArea.setMaxWidth(Double.MAX_VALUE);
-        textArea.setMaxHeight(Double.MAX_VALUE);
-        GridPane.setVgrow(textArea, Priority.ALWAYS);
-        GridPane.setHgrow(textArea, Priority.ALWAYS);
-
-        GridPane expContent = new GridPane();
-        expContent.setMaxWidth(Double.MAX_VALUE);
-        expContent.add(label, 0, 0);
-        expContent.add(textArea, 0, 1);
-
-        alert.getDialogPane().setExpandableContent(expContent);
-        alert.showAndWait();
-    }
-
     public static void showMaterialDialog(StackPane root, Node nodeToBeBlurred, List<Button> controls, String header, String body) {
         BoxBlur blur = new BoxBlur(3, 3, 3);
 
         Dialog<Void> dialog = new Dialog<>();
         dialog.initOwner(root.getScene().getWindow());
         dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.getDialogPane().getStylesheets().add(AlertMaker.class.getResource("/tn/ensit/miniprojetbibliotheque/dark-theme.css").toExternalForm());
+        dialog.getDialogPane().getStylesheets().add(AlertMaker.class.getResource("/tn/ensit/miniprojetbibliotheque/biblio_styles.css").toExternalForm());
         dialog.getDialogPane().getStyleClass().add("custom-alert");
-
 
         VBox content = new VBox();
         content.setSpacing(10);
@@ -137,12 +72,11 @@ public class AlertMaker {
     }
 
 
-
     private static void styleAlert(Alert alert) {
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         LibraryAssistantUtil.setStageIcon(stage);
         DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(AlertMaker.class.getResource("/tn/ensit/miniprojetbibliotheque/dark-theme.css").toExternalForm());
+        dialogPane.getStylesheets().add(AlertMaker.class.getResource("/tn/ensit/miniprojetbibliotheque/biblio_styles.css").toExternalForm());
         dialogPane.getStyleClass().add("custom-alert");
     }
 }

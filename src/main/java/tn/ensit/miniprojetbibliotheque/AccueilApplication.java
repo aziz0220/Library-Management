@@ -12,7 +12,7 @@ public class AccueilApplication extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("accueil-view.fxml"));
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("dark-theme.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("biblio_styles.css").toExternalForm());
             primaryStage.setTitle("Bibliotheque");
             primaryStage.setScene(scene);
             primaryStage.show();

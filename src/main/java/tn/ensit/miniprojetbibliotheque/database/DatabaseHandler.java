@@ -174,16 +174,16 @@ public final class DatabaseHandler {
         ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
         try {
             String qu1 = "SELECT COUNT(*) FROM livre";
-            String qu2 = "SELECT COUNT(*) FROM detailemprunt";
+            String qu2 = "SELECT COUNT(*) FROM detailemprunt WHERE dateretour IS NULL";
             ResultSet rs = execQuery(qu1);
             if (rs.next()) {
                 int count = rs.getInt(1);
-                data.add(new PieChart.Data("Total Books (" + count + ")", count));
+                data.add(new PieChart.Data("Livres Totales (" + count + ")", count));
             }
             rs = execQuery(qu2);
             if (rs.next()) {
                 int count = rs.getInt(1);
-                data.add(new PieChart.Data("Issued Books (" + count + ")", count));
+                data.add(new PieChart.Data("Livres empruntés (" + count + ")", count));
             }
         }
         catch (Exception e) {
@@ -192,37 +192,6 @@ public final class DatabaseHandler {
         return data;
     }
 
-//    public ObservableList<PieChart.Data> getMemberGraphStatistics() {
-//        ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
-//        try {
-//            String qu1 = "SELECT COUNT(*) FROM MEMBER";
-//            String qu2 = "SELECT COUNT(DISTINCT memberID) FROM ISSUE";
-//            ResultSet rs = execQuery(qu1);
-//            if (rs.next()) {
-//                int count = rs.getInt(1);
-//                data.add(new PieChart.Data("Total Members (" + count + ")", count));
-//            }
-//            rs = execQuery(qu2);
-//            if (rs.next()) {
-//                int count = rs.getInt(1);
-//                data.add(new PieChart.Data("Active (" + count + ")", count));
-//            }
-//        }
-//        catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return data;
-//    }
-
-    private static void createTables(List<String> tableData) throws SQLException {
-        Statement statement = conn.createStatement();
-        statement.closeOnCompletion();
-        for (String command : tableData) {
-            System.out.println(command);
-            statement.addBatch(command);
-        }
-        statement.executeBatch();
-    }
 
     public Connection getConnection() {
         return conn;

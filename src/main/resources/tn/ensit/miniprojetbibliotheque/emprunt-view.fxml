@@ -5,12 +5,14 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="empruntAnchor" prefHeight="625.0" prefWidth="1000.0" stylesheets="@dark-theme.css" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.ensit.miniprojetbibliotheque.EmpruntLivreController">
+<AnchorPane fx:id="empruntAnchor" prefHeight="625.0" prefWidth="1000.0" stylesheets="@biblio_styles.css" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.ensit.miniprojetbibliotheque.EmpruntLivreController">
      <children>
         <TabPane fx:id="empruntTabs" layoutX="150.0" layoutY="26.0" prefHeight="599.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE">
           <tabs>
@@ -40,22 +42,50 @@
                              <children>
 
                                                                                    <!-- Return Book Section -->
-                                   <HBox prefHeight="223.0" prefWidth="868.0" spacing="10">
-                                   <Button fx:id="lecteursliste" mnemonicParsing="false" onAction="#handleMenuViewLecteur" prefHeight="38.0" prefWidth="158.0" text="LECTEURS">
+                                   <HBox prefHeight="360.0" prefWidth="868.0" spacing="10">
+                                   <Button fx:id="lecteursliste" mnemonicParsing="false" onAction="#handleMenuViewLecteur" prefHeight="124.0" prefWidth="124.0">
                                       <HBox.margin>
                                          <Insets left="5.0" />
                                       </HBox.margin>
+                                    <graphic>
+                                       <ImageView fitHeight="66.0" fitWidth="80.0">
+                                          <image>
+                                             <Image url="@icons/liste_lecteurs.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic>
                                    </Button>
-                                   <Button fx:id="livrelistes" mnemonicParsing="false" onAction="#handleMenuViewBook" prefHeight="38.0" prefWidth="163.0" text="LIVRES" />
+                                   <Button fx:id="livrelistes" mnemonicParsing="false" onAction="#handleMenuViewBook" prefHeight="124.0" prefWidth="124.0">
+                                    <graphic>
+                                       <ImageView fitHeight="66.0" fitWidth="80.0">
+                                          <image>
+                                             <Image url="@icons/liste_livres.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic></Button>
                                        <ComboBox fx:id="borrowedBooksComboBox" prefHeight="27.0" prefWidth="232.0" promptText="Select a Borrowed Book">
                                       <HBox.margin>
                                          <Insets top="300.0" />
                                       </HBox.margin></ComboBox>
-                                   <Button fx:id="empruntlist" mnemonicParsing="false" onAction="#handleIssuedList" prefHeight="38.0" prefWidth="171.0" text="EMPRUNTES" />
-                                       <Button alignment="CENTER" layoutX="100.0" onAction="#returnBook" prefHeight="38.0" prefWidth="157.0" text="Return" textAlignment="CENTER">
+                                   <Button fx:id="empruntlist" mnemonicParsing="false" onAction="#handleIssuedList" prefHeight="124.0" prefWidth="124.0">
+                                    <graphic>
+                                       <ImageView fitHeight="113.0" fitWidth="132.0">
+                                          <image>
+                                             <Image url="@icons/borrow.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic></Button>
+                                       <Button alignment="CENTER" layoutX="100.0" onAction="#returnBook" prefHeight="60.0" prefWidth="144.0" text="Return" textAlignment="CENTER">
                                       <HBox.margin>
                                          <Insets top="300.0" />
-                                      </HBox.margin></Button>
+                                      </HBox.margin>
+                                    <graphic>
+                                       <ImageView fitHeight="58.0" fitWidth="52.0">
+                                          <image>
+                                             <Image url="@icons/return.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic></Button>
                                    </HBox>
                              </children>
                           </VBox>

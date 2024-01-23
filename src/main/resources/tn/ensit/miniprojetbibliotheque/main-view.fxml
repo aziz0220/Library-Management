@@ -7,6 +7,8 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -25,7 +27,7 @@
          </Menu>
           <Menu mnemonicParsing="false" text="Biblio">
               <items>
-                  <MenuItem fx:id="closeSessionButton" mnemonicParsing="false" onAction="#handleMenuClose" text="Exit" />
+                  <MenuItem fx:id="closeSessionButton" mnemonicParsing="false" onAction="#handleMenuClose" text="Quitter" />
               </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Ajouter">
@@ -76,7 +78,14 @@
                       </VBox>
                   </children>
               </StackPane>
-            <Button fx:id="emprunt" mnemonicParsing="false" onAction="#handleEmpruntView" prefHeight="168.0" prefWidth="253.0" text="Emprunter / Retourner livre" />
+            <Button fx:id="emprunt" mnemonicParsing="false" onAction="#handleEmpruntView" prefHeight="168.0" prefWidth="253.0" text="Emprunter / Retourner livre">
+                           <graphic>
+                              <ImageView fitHeight="34.0" fitWidth="31.0">
+                                 <image>
+                                    <Image url="@icons/borrow1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
           </children>
           </HBox>
             </children>
