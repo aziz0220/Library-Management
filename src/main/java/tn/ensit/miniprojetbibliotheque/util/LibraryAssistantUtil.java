@@ -24,7 +24,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import tn.ensit.miniprojetbibliotheque.alert.AlertMaker;
 import tn.ensit.miniprojetbibliotheque.export.pdf.ListToPDF;
-import tn.ensit.miniprojetbibliotheque.settings.Preferences;
 import tn.ensit.miniprojetbibliotheque.MainController;
 
 public class LibraryAssistantUtil {
@@ -60,15 +59,7 @@ public class LibraryAssistantUtil {
         return controller;
     }
 
-    public static Float getFineAmount(int totalDays) {
-        Preferences pref = Preferences.getPreferences();
-        Integer fineDays = totalDays - pref.getnDaysWithoutFine();
-        Float fine = 0f;
-        if (fineDays > 0) {
-            fine = fineDays * pref.getFinePerDay();
-        }
-        return fine;
-    }
+
 
     public static void initPDFExport(StackPane rootPane, Node contentPane, Stage stage, List<List> data) {
         FileChooser fileChooser = new FileChooser();

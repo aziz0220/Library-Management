@@ -1,27 +1,43 @@
 package tn.ensit.miniprojetbibliotheque;
 
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import tn.ensit.miniprojetbibliotheque.alert.AlertMaker;
 import tn.ensit.miniprojetbibliotheque.callback.BookReturnCallback;
 import tn.ensit.miniprojetbibliotheque.database.EmpruntController;
 import tn.ensit.miniprojetbibliotheque.database.LivreController;
 import tn.ensit.miniprojetbibliotheque.database.LecteurController;
+import tn.ensit.miniprojetbibliotheque.MainController;
 import tn.ensit.miniprojetbibliotheque.models.DetailEmprunt;
 import tn.ensit.miniprojetbibliotheque.models.Lecteur;
 import tn.ensit.miniprojetbibliotheque.models.Livre;
 import tn.ensit.miniprojetbibliotheque.util.LibraryAssistantUtil;
 
+import java.io.IOException;
 import java.util.stream.Collectors;
 
 public class EmpruntLivreController {
+    private MainController mainController;
 
     @FXML
     private ComboBox<String> booksComboBox;
+
+    @FXML
+    private AnchorPane empruntAnchor;
+
 
     @FXML
     private ComboBox<String> readersComboBox;
@@ -37,6 +53,11 @@ public class EmpruntLivreController {
 
     @FXML
     private Button livrelistes;
+
+
+    @FXML
+    private Button backMain;
+
 
     private ObservableList<Livre> allBooksList;
     private ObservableList<Lecteur> allReadersList;
@@ -172,5 +193,25 @@ public class EmpruntLivreController {
 
     }
 
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
 
+    @FXML
+    void handleBackMainView(ActionEvent event) throws IOException {
+        Scene scene = backMain.getScene();
+        backMain.setDisable(true);
+        empruntAnchor.translateXProperty().set(0);
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(empruntAnchor.translateXProperty(), scene.getWidth(), Interpolator.EASE_OUT);
+        KeyFrame kf = new KeyFrame(Duration.seconds(0.3), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(event0 -> {
+            mainController.mainAnchorPane.getChildren().remove(empruntAnchor);
+            mainController.mainAnchorPane.getChildren().add(mainController.book_info);
+            backMain.setDisable(false);
+        });
+        timeline.play();
+    }
 }
+

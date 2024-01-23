@@ -11,13 +11,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import tn.ensit.miniprojetbibliotheque.callback.BookReturnCallback;
-import tn.ensit.miniprojetbibliotheque.database.DatabaseHandler;
 import tn.ensit.miniprojetbibliotheque.models.DetailEmprunt;
 import tn.ensit.miniprojetbibliotheque.util.LibraryAssistantUtil;
 import tn.ensit.miniprojetbibliotheque.database.EmpruntController;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -68,10 +65,6 @@ public class ListeEmpruntController implements Initializable {
         daysCol.setCellValueFactory(new PropertyValueFactory<>("days"));
         dateRetourCol.setCellValueFactory(new PropertyValueFactory<>("dateRetour"));
 
-        // Make sure to initialize the TableColumn objects before using them
-        // e.g., lecteurNameCol = new TableColumn<>("Lecteur Name");
-        // ...
-
         tableView.setItems(list);
     }
 
@@ -95,7 +88,7 @@ public class ListeEmpruntController implements Initializable {
     @FXML
     private void exportAsPDF(ActionEvent event) {
         List<List> printData = new ArrayList<>();
-        String[] headers = { "      BOOK NAME       ", "    Lecteur NAME     ", "ISSUE DATE", "dateretour"};
+        String[] headers = { "      Livre       ", "    Lecteur    ", "Date D'emprunte ", "Date De Retour"};
         printData.add(Arrays.asList(headers));
         for (DetailEmprunt info : list) {
             List<String> row = new ArrayList<>();

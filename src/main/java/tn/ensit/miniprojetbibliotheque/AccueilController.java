@@ -1,51 +1,99 @@
 package tn.ensit.miniprojetbibliotheque;
 
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import tn.ensit.miniprojetbibliotheque.util.LibraryAssistantUtil;
+
+
+import java.io.IOException;
+import java.sql.Time;
 
 public class AccueilController {
-    @FXML
-    private Label welcomeText;
 
 
     @FXML
-    private void handleExit(ActionEvent event) {
-        // Handle the "Exit" menu item action
-        System.exit(0);
-    }
-
-
+    private Button StartButton;
 
     @FXML
-    private void openBooksInterface() {
-//        try {
-//            Parent root = FXMLLoader.load(getClass().getResource("liste-livres-view.fxml"));
-//            Scene scene = new Scene(root);
-//            scene.getStylesheets().add(getClass().getResource("../../../dark-theme.css").toExternalForm());
-//            primaryStage.setScene(scene);
-//            primaryStage.show();
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-        welcomeText.setText("Manage Books : Open Manage Books Interface");
-    }
-
-
+    private StackPane mainContainer;
 
     @FXML
-    private void openReadersInterface() {
-        // Add code to open the interface for managing readers
-        welcomeText.setText("Manage Readers : Open Manage Readers Interface");
+    private AnchorPane startAnchor;
+
+    @FXML
+    private void handleStartButton(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
+        Scene scene = StartButton.getScene();
+        StartButton.setDisable(true);
+        root.translateYProperty().set(scene.getHeight());
+        mainContainer.getChildren().add(root);
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(0.3), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(event0 -> {mainContainer.getChildren().remove(startAnchor);
+            StartButton.setDisable(false);});
+        timeline.play();
     }
 
     @FXML
-    private void openBorrowReturnInterface() {
-        // Add code to open the interface for borrowing/returning books
-        welcomeText.setText("Borrow/Return Books : Open Borrow/Return Interface");
+    private void handleMenuClose(ActionEvent event) {
+        getStage().close();
     }
+
+    @FXML
+    private void handleMenuAddBook(ActionEvent event) {
+        LibraryAssistantUtil.loadWindow(getClass().getResource("ajout-livre-view.fxml"), "Add New Book", null);
+    }
+
+    @FXML
+    private void handleMenuAddMember(ActionEvent event) {
+        LibraryAssistantUtil.loadWindow(getClass().getResource("ajout-lecteur-view.fxml"), "Ajout d'un Lecteur", null);
+    }
+
+    @FXML
+    private void handleMenuViewBook(ActionEvent event) {
+        LibraryAssistantUtil.loadWindow(getClass().getResource("liste-livres-view.fxml"), "Liste des Livres", null);
+    }
+
+
+    @FXML
+    private void handleMenuViewMemberList(ActionEvent event) {
+        LibraryAssistantUtil.loadWindow(getClass().getResource("liste-lecteurs-view"), "Member List", null);
+    }
+
+
+    @FXML
+    void handleEmpruntView(ActionEvent event) {
+        LibraryAssistantUtil.loadWindow(getClass().getResource("emprunt-view.fxml"), "Emprunter / Retourner Livre", null);
+    }
+
+    @FXML
+    private void handleIssuedList(ActionEvent event) {
+        LibraryAssistantUtil.loadWindow(getClass().getResource("liste-emprunt-view.fxml"), "Issued Book List", null);
+    }
+
+    @FXML
+    private void handleMenuFullScreen(ActionEvent event) {
+        Stage stage = getStage();
+        stage.setFullScreen(!stage.isFullScreen());
+    }
+
+    private Stage getStage() {
+        return (Stage) mainContainer.getScene().getWindow();
+    }
+
 
 }

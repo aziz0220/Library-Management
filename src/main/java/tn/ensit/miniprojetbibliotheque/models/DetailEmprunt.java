@@ -5,9 +5,6 @@ import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 public class DetailEmprunt {
 	private final SimpleLongProperty id;
@@ -109,8 +106,4 @@ public class DetailEmprunt {
 			return millisecondsDifference / (24 * 60 * 60 * 1000);
 		}
 	}
-
-
-
-
 }
